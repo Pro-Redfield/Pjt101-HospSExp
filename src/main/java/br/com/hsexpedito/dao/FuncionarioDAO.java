@@ -1,5 +1,22 @@
 package br.com.hsexpedito.dao;
 
-public class FuncionarioDAO {
+import br.com.hsexpedito.connection.ConnectionMySql;
+import br.com.hsexpedito.model.Funcionario;
 
+public class FuncionarioDAO extends ConnectionMySql{
+	
+	
+
+    public void cadastar(Funcionario f) throws Exception{
+        OpenDatabase();
+        SQL = "INSERT INTO tb_funcionario (nome, email, tel)"
+                + "VALUES(?,?,?)";
+        ps = con.prepareStatement(SQL);
+        ps.setString(1, f.getNome());
+        ps.setString(2, f.getEmail());
+        ps.setString(3, f.getTel());
+        ps.execute();
+        CloseDatabase();
+    }
+	
 }
