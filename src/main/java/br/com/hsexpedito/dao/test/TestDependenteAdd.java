@@ -1,9 +1,7 @@
 package br.com.hsexpedito.dao.test;
 
 import br.com.hsexpedito.dao.DependenteDAO;
-import br.com.hsexpedito.dao.FuncionarioDAO;
 import br.com.hsexpedito.model.Dependente;
-import br.com.hsexpedito.model.Funcionario;
 
 public class TestDependenteAdd {
 
