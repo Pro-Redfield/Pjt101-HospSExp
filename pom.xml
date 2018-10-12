@@ -5,4 +5,12 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>Sistema Hospital Santo Expedito</name>
   <description>Sistema de gerenciamento do Hospital Santo Expedito. Desenvolvido pela fábrica de software Pro-Redfield.</description>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>5.1.47</version>
+  	</dependency>
+  </dependencies>
 </project>
