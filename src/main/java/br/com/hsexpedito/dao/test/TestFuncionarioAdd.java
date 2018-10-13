@@ -6,10 +6,12 @@ import br.com.hsexpedito.model.Funcionario;
 public class TestFuncionarioAdd {
 
     public static void main(String[] args) throws Exception{
+        
         Funcionario f = new Funcionario();
+        
         f.setNome("Miguel Trival");
         f.setEmail("miguel.t@gmail.com");
-        f.setTel("98764321");
+        f.setTelefone("98764321");
         
         FuncionarioDAO dao = new FuncionarioDAO();
         dao.cadastar(f);
