@@ -5,7 +5,7 @@ public class Dependente {
 	private int id;
 	private String nome;
 	private String parentesco;
-	private int funcionarioid;
+	private Funcionario funcionario;
 	
 	public int getId() {
 		return id;
@@ -25,11 +25,11 @@ public class Dependente {
 	public void setParentesco(String parentesco) {
 		this.parentesco = parentesco;
 	}
-	public int getFuncionarioid() {
-		return funcionarioid;
+	public Funcionario getFuncionario() {
+		return funcionario;
 	}
-	public void setFuncionarioid(int funcionarioid) {
-		this.funcionarioid = funcionarioid;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 	
 	
