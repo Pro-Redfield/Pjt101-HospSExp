@@ -1,25 +1,36 @@
 package br.com.hsexpedito.connection;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ConnectionMySql {
 	
     public Connection con;
-    public PreparedStatement ps;
-    public ResultSet rs;
-    public String SQL;
     
-    public void OpenDatabase()throws Exception{
+    public Connection get()throws Exception{
+        
         Class.forName("com.mysql.jdbc.Driver");
         String url = "jdbc:mysql://localhost:3306/hsexpedito";
         String user = "root";
         String password = "root";
-        con = DriverManager.getConnection(url, user, password);
+        
+        if ( con == null){
+            con = DriverManager.getConnection(url, user, password);
+            return con;
+        }
+        
+        return con;
+        
     }
 
-    public void CloseDatabase() throws Exception{
+    public void close() throws RuntimeException{
         if(con != null){
-            con.close();
+            try {
+                con.close();
+            } catch (SQLException exception) {
+                throw new RuntimeException("Failed to connect database");
+            }
         }
     }
 }
