@@ -1,2 +1,14 @@
 https://docs.google.com/document/d/e/2PACX-1vQxvCt9yBloYqaJmHNv9jQOyMg5vBxJaBqCdn0x5l62gf3glHS8AQGdvMCSd9eFfltt-iESj5WWBrhC/pub
 
+SELECT
+	tb_dependente.iddependente,
+	tb_dependente.nome,
+	tb_dependente.parentesco,
+    tb_funcionario.idfuncionario,
+    tb_funcionario.nome
+FROM
+   tb_dependente
+INNER JOIN
+   tb_funcionario ON tb_dependente.funcionario_id = tb_funcionario.idfuncionario
+WHERE
+   tb_dependente.iddependente = 3
