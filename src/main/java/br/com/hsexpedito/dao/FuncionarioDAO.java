@@ -18,7 +18,9 @@ public class FuncionarioDAO extends ConnectionMySql {
 		CloseDatabase();
 	}
 
-	// BUSCAR POR ID
+	// BUSCAR POR ID - 1 FUNC + SEUS DEPENDENTES
+	
+	// BUSCAR POR NOME - 1 FUNC + SEUS DEPENDENTES
 
 	// ATUALIZAR
 
@@ -26,7 +28,6 @@ public class FuncionarioDAO extends ConnectionMySql {
 	
 	// LISTAR TODOS FUNCIONARIOS
 	
-	// LISTA FUNCIONA UM FUNCIONARIO POR ID E SEUS DEPENDENTES
 	
 
 }

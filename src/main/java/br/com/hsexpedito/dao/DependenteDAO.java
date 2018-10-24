@@ -46,6 +46,10 @@ public class DependenteDAO extends ConnectionMySql{
 		CloseDatabase();
 		return dependente;
 	}
+    
+    //  BUSCAR POR NOME - DEPENDENTE + FUNCIONARIO TITULAR
+    
+    
 
 	// ATUALIZAR
 	public void atualizar(Dependente dependente) throws Exception {
