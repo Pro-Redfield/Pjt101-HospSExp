@@ -2,31 +2,32 @@ package br.com.hsexpedito.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ConnectionMySql {
-
-	public Connection con;
-	public PreparedStatement ps;
-	public ResultSet rs;
-	public String SQL;
 
 	static final String mysqlDatabase = "JDBC:mysql://localhost:3306/hsexpedito";
 	static final String user = "root";
 	static final String password = "root";
 
-	public void openDatabase() throws Exception {
-		Class.forName("com.mysql.jdbc.Driver");
-		String url = "jdbc:mysql://localhost:3306/hsexpedito";
-		String user = "root";
-		String password = "root";
-		con = DriverManager.getConnection(url, user, password);
+	public static Connection openDatabase() {
+
+		try {
+			return DriverManager.getConnection(mysqlDatabase, user, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Erro na abertura de conexão com o banco de dados!");
+			return null;
+		}
 	}
 
-	public void closeDatabase() throws Exception {
-		if (con != null) {
-			con.close();
+	public void closeDatabase(Connection connection) {
+
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao fechar conexão com o banco de dados!");
 		}
 	}
 }
