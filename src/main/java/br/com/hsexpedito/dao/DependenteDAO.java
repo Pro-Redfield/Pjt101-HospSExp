@@ -9,7 +9,7 @@ public class DependenteDAO extends ConnectionMySql{
 	
 	// CADASTRAR
     public void cadastar(Dependente dependente) throws Exception{
-        OpenDatabase();
+        openDatabase();
         SQL = "INSERT INTO tb_dependente (nome, parentesco, funcionario_id)"
                 + "VALUES(?,?,?)";
         ps = con.prepareStatement(SQL);
@@ -22,7 +22,7 @@ public class DependenteDAO extends ConnectionMySql{
     
     // BUSCAR POR ID - DEPENDENTE + FUNCIONARIO TITULAR
     public Dependente buscaPorId(Integer id)throws Exception{
-        OpenDatabase();
+        openDatabase();
         SQL = "SELECT "
         	+"tb_dependente.iddependente,tb_dependente.nome,tb_dependente.parentesco,"
         	+"tb_funcionario.idfuncionario,tb_funcionario.nome "
@@ -53,7 +53,7 @@ public class DependenteDAO extends ConnectionMySql{
 
 	// ATUALIZAR
 	public void atualizar(Dependente dependente) throws Exception {
-		OpenDatabase();
+		openDatabase();
 		SQL = "UPDATE tb_dependente SET nome=?, parentesco=?, funcionario_id=? "
 			+ "WHERE iddependente=?";
 		ps = con.prepareStatement(SQL);
@@ -67,7 +67,7 @@ public class DependenteDAO extends ConnectionMySql{
 
 	// DELETAR
 	public void deletar(Integer id) throws Exception {
-		OpenDatabase();
+		openDatabase();
 		SQL = "DELETE FROM tb_dependente WHERE iddependente=?";
 		ps = con.prepareStatement(SQL);
 		ps.setInt(1, id);

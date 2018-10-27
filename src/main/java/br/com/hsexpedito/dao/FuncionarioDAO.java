@@ -7,7 +7,7 @@ public class FuncionarioDAO extends ConnectionMySql {
 
 	// CADASTRAR
 	public void cadastar(Funcionario f) throws Exception {
-		OpenDatabase();
+		openDatabase();
 		SQL = "INSERT INTO tb_funcionario (nome, email, tel)"
 				+ "VALUES(?,?,?)";
 		ps = con.prepareStatement(SQL);
