@@ -83,6 +83,25 @@ public class FuncionarioDAO {
 		return funcionarios;
 	}
 	
+	public void deletar(int id) {
+
+		String deleteSql = "DELETE FROM tb_funcionario WHERE idfuncionario = ?";
+
+		try (Connection conexao = ConnectionMySql.openDatabase()) {
+
+			PreparedStatement ps = conexao.prepareStatement(deleteSql);
+
+			ps.setInt(1, id);			
+
+			ps.execute();
+			ps.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao deletar funcionario no banco de dados!");
+		}
+	}
+	
 	// BUSCAR POR ID - 1 FUNC + SEUS DEPENDENTES
 
 	// BUSCAR POR NOME - 1 FUNC + SEUS DEPENDENTES
