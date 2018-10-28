@@ -22,6 +22,7 @@ public class FuncionarioDAO {
 			ps.setString(3, f.getTelefone());
 
 			ps.execute();
+			ps.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -31,16 +32,19 @@ public class FuncionarioDAO {
 
 	public void atualizar(int id, String nome, String email, String telefone) {
 
-		String updateSql = "UPDATE tb_funcionario SET idfuncionario = ?, nome = ?, email = ?, tel = ? WHERE idfuncionario = ?";
+		String updateSql = "UPDATE tb_funcionario SET nome = ?, email = ?, tel = ? WHERE idfuncionario = ?";
 
 		try (Connection conexao = ConnectionMySql.openDatabase()) {
 
 			PreparedStatement ps = conexao.prepareStatement(updateSql);
 
-			ps.setInt(1, id);
-			ps.setString(2, nome);
-			ps.setString(3, email);
-			ps.setString(4, telefone);
+			ps.setString(1, nome);
+			ps.setString(2, email);
+			ps.setString(3, telefone);
+			ps.setInt(4, id);
+			
+			ps.executeUpdate();
+			ps.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
