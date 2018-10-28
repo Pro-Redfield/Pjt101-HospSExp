@@ -2,7 +2,10 @@ package br.com.hsexpedito.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.hsexpedito.connection.ConnectionMySql;
 import br.com.hsexpedito.model.Funcionario;
@@ -42,7 +45,7 @@ public class FuncionarioDAO {
 			ps.setString(2, email);
 			ps.setString(3, telefone);
 			ps.setInt(4, id);
-			
+
 			ps.executeUpdate();
 			ps.close();
 
@@ -51,6 +54,35 @@ public class FuncionarioDAO {
 			System.out.println("Erro ao atualizar funcionario no banco de dados!");
 		}
 	}
+
+	public List<Funcionario> listar() {
+
+		String selectSql = "SELECT * FROM tb_funcionario";
+		ResultSet lista = null;
+		ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
+
+		try (Connection conexao = ConnectionMySql.openDatabase()) {
+
+			PreparedStatement ps = conexao.prepareStatement(selectSql);
+
+			lista = ps.executeQuery();
+
+			while (lista.next()) {
+				Funcionario funcionario = new Funcionario(lista.getInt("idfuncionario"), lista.getString("nome"),lista.getString("email"), lista.getString("tel"));
+				funcionarios.add(funcionario);
+			}
+			
+			lista.close();
+			ps.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao buscar funcionarios no banco de dados!");
+		}
+		
+		return funcionarios;
+	}
+	
 	// BUSCAR POR ID - 1 FUNC + SEUS DEPENDENTES
 
 	// BUSCAR POR NOME - 1 FUNC + SEUS DEPENDENTES

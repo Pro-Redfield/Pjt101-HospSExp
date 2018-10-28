@@ -9,11 +9,11 @@ public class TestFuncionarioAtualizar {
 
 		Funcionario funcionario = new Funcionario(1, "Joao", "joao@gmail.com", "226-1000");
 		
-		FuncionarioDAO fDAO = new FuncionarioDAO();
+		FuncionarioDAO fDao = new FuncionarioDAO();
 		
-		fDAO.cadastar(funcionario);
+		fDao.cadastar(funcionario);
 		
-		fDAO.atualizar(11, "Pedro", "pedro@gmail.com", "336-1000");
+		fDao.atualizar(11, "Pedro", "pedro@gmail.com", "336-1000");
 		
 		
 	}

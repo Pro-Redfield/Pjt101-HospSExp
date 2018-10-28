@@ -9,6 +9,12 @@ public class Funcionario {
 	private String email;
 	private String telefone;
 	private List<Dependente> dependentes;
+	
+	
+
+	public Funcionario() {
+		super();	
+	}
 
 	public Funcionario(int id, String nome, String email, String telefone) {
 		super();
@@ -58,4 +64,8 @@ public class Funcionario {
 		this.dependentes = dependentes;
 	}
 
+	@Override
+	public String toString() {
+		return "Funcionario [id=" + id + ", nome=" + nome + ", email=" + email + ", telefone=" + telefone + "]";
+	}
 }
