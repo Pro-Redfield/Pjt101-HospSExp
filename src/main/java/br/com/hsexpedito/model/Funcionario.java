@@ -10,6 +10,14 @@ public class Funcionario {
 	private String telefone;
 	private List<Dependente> dependentes;
 
+	public Funcionario(int id, String nome, String email, String telefone) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+	}
+
 	public int getId() {
 		return id;
 	}
