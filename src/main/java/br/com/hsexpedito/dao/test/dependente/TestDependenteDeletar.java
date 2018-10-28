@@ -6,9 +6,9 @@ public class TestDependenteDeletar {
 
 	public static void main(String[] args) throws Exception {
 
-		DependenteDAO dao = new DependenteDAO();
-		dao.deletar(7); // Id do dependente que será deletado
-		System.out.println("Dependente Deletado com sucesso!");
+//		DependenteDAO dao = new DependenteDAO();
+//		dao.deletar(7); // Id do dependente que será deletado
+//		System.out.println("Dependente Deletado com sucesso!");
 
 	}
 }

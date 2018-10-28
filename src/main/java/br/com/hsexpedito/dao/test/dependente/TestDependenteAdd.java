@@ -9,17 +9,17 @@ public class TestDependenteAdd {
 
     public static void main(String[] args) throws Exception{
     	    	
-        Dependente dependente = new Dependente();
-        dependente.setFuncionario(new Funcionario());     //Tive que usar isso pra sair o Nullpoint 
-        
-        dependente.setNome("Antonio");
-        dependente.setParentesco("Filho");
-        dependente.getFuncionario().setId(3);
-        
-        DependenteDAO dao = new DependenteDAO();
-        dao.cadastar(dependente);
-        
-        System.out.println("Dependente "+dependente.getNome()+" cadrastrado com sucesso!");
+//        Dependente dependente = new Dependente();
+//        dependente.setFuncionario(new Funcionario());     //Tive que usar isso pra sair o Nullpoint 
+//        
+//        dependente.setNome("Antonio");
+//        dependente.setParentesco("Filho");
+//        dependente.getFuncionario().setId(3);
+//        
+//        DependenteDAO dao = new DependenteDAO();
+//        dao.cadastar(dependente);
+//        
+//        System.out.println("Dependente "+dependente.getNome()+" cadrastrado com sucesso!");
     }    
 
 }

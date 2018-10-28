@@ -1,10 +1,10 @@
 package br.com.hsexpedito.dao;
 
 import br.com.hsexpedito.connection.ConnectionMySql;
-import br.com.hsexpedito.model.Dependente;
-import br.com.hsexpedito.model.Funcionario;
 
 public class DependenteDAO extends ConnectionMySql {
+	
+/*
 
 	// CADASTRAR
 	public void cadastar(Dependente dependente) throws Exception {
@@ -64,4 +64,6 @@ public class DependenteDAO extends ConnectionMySql {
 		ps.execute();
 		closeDatabase();
 	}
+	
+*/
 }
