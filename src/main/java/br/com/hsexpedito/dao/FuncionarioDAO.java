@@ -68,10 +68,10 @@ public class FuncionarioDAO {
 			lista = ps.executeQuery();
 
 			while (lista.next()) {
-				Funcionario funcionario = new Funcionario(lista.getInt("idfuncionario"), lista.getString("nome"),lista.getString("email"), lista.getString("tel"));
+				Funcionario funcionario = new Funcionario(lista.getInt("idfuncionario"), lista.getString("nome"), lista.getString("email"), lista.getString("tel"));
 				funcionarios.add(funcionario);
 			}
-			
+
 			lista.close();
 			ps.close();
 
@@ -79,10 +79,42 @@ public class FuncionarioDAO {
 			e.printStackTrace();
 			System.out.println("Erro ao buscar funcionarios no banco de dados!");
 		}
-		
+
 		return funcionarios;
 	}
 	
+	public Funcionario listarId(int id) {
+
+		String listByIdSql = "SELECT * FROM tb_funcionario WHERE idfuncionario = ?";
+		ResultSet funcionarioPorId = null;
+		Funcionario funcionario = new Funcionario();
+
+		try (Connection conexao = ConnectionMySql.openDatabase()) {
+
+			PreparedStatement ps = conexao.prepareStatement(listByIdSql);
+
+			ps.setInt(1, id);			
+
+			funcionarioPorId = ps.executeQuery();
+			
+			
+			while (funcionarioPorId.next()) {
+				funcionario.setId(funcionarioPorId.getInt("idfuncionario"));
+				funcionario.setNome(funcionarioPorId.getString("nome"));
+				funcionario.setEmail(funcionarioPorId.getString("email"));
+				funcionario.setTelefone(funcionarioPorId.getString("tel"));
+			}
+			
+			ps.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("Erro ao atualizar funcionario no banco de dados!");
+		}
+		
+		return funcionario;
+	}
+
 	public void deletar(int id) {
 
 		String deleteSql = "DELETE FROM tb_funcionario WHERE idfuncionario = ?";
@@ -91,7 +123,7 @@ public class FuncionarioDAO {
 
 			PreparedStatement ps = conexao.prepareStatement(deleteSql);
 
-			ps.setInt(1, id);			
+			ps.setInt(1, id);
 
 			ps.execute();
 			ps.close();
@@ -101,14 +133,4 @@ public class FuncionarioDAO {
 			System.out.println("Erro ao deletar funcionario no banco de dados!");
 		}
 	}
-	
-	// BUSCAR POR ID - 1 FUNC + SEUS DEPENDENTES
-
-	// BUSCAR POR NOME - 1 FUNC + SEUS DEPENDENTES
-
-	// ATUALIZAR
-
-	// DELETAR
-
-	// LISTAR TODOS FUNCIONARIOS
 }
