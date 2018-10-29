@@ -12,3 +12,19 @@ INNER JOIN
    tb_funcionario ON tb_dependente.funcionario_id = tb_funcionario.idfuncionario
 WHERE
    tb_dependente.iddependente = 3
+
+
+SELECT
+  tb_funcionario.idfuncionario,
+  tb_funcionario.nome,
+  tb_funcionario.email,
+  tb_funcionario.tel,
+  tb_dependente.iddependente,
+	tb_dependente.nome,
+	tb_dependente.parentesco
+FROM
+  tb_funcionario
+INNER JOIN
+   tb_dependente ON tb_funcionario.idfuncionario = tb_dependente.funcionario_id
+WHERE
+   tb_funcionario.idfuncionario = 1

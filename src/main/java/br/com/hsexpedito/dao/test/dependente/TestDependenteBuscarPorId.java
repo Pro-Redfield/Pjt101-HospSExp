@@ -8,7 +8,7 @@ public class TestDependenteBuscarPorId {
 	public static void main(String[] args) throws Exception {
 
 		DependenteDAO dao = new DependenteDAO();
-		Dependente dependente = dao.buscaPorId(20);
+		Dependente dependente = dao.buscaPorId(4);
 
         System.out.println("Cod: " + dependente.getId());
         System.out.println("Nome: " + dependente.getNome());
