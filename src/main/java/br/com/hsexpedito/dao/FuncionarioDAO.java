@@ -31,26 +31,28 @@ public class FuncionarioDAO extends ConnectionMySql {
 		ps = con.prepareStatement(SQL);
 		ps.setInt(1, id);
 		rs = ps.executeQuery();
-		Funcionario funcionario = new Funcionario();
 		
-		if (rs.next()) {
+		Funcionario funcionario = new Funcionario();
+		List<Dependente> listaDependentes = new ArrayList<Dependente>();
+		funcionario.setDependentes(new ArrayList<Dependente>());
+		
+		while (rs.next()) {
 			funcionario.setId(rs.getInt("tb_funcionario.idfuncionario"));
 			funcionario.setNome(rs.getString("tb_funcionario.nome"));
 			funcionario.setEmail(rs.getString("tb_funcionario.email"));
 			funcionario.setTelefone(rs.getString("tb_funcionario.tel"));
-			
-			List<Dependente> listaDependentes = new ArrayList<Dependente>();
-			
-			while(rs.next()){
-								
+
 				Dependente dependente = new Dependente();
 				dependente.setId(rs.getInt("tb_dependente.iddependente"));
-				funcionario.setNome(rs.getString("tb_dependente.nome"));
-				funcionario.setEmail(rs.getString("tb_dependente.parentesco"));
-				
-				listaDependentes.add(dependente);
-	        }
+				dependente.setNome(rs.getString("tb_dependente.nome"));
+				dependente.setParentesco(rs.getString("tb_dependente.parentesco"));
+
+			listaDependentes.add(dependente);
+
 		}
+
+		funcionario.setDependentes(listaDependentes);
+		
 		closeDatabase();
 		return funcionario;
 	}

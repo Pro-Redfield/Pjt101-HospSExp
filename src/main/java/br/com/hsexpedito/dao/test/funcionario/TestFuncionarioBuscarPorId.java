@@ -1,7 +1,5 @@
 package br.com.hsexpedito.dao.test.funcionario;
 
-import java.util.ArrayList;
-import java.util.List;
 import br.com.hsexpedito.dao.FuncionarioDAO;
 import br.com.hsexpedito.model.Dependente;
 import br.com.hsexpedito.model.Funcionario;
@@ -20,19 +18,15 @@ public class TestFuncionarioBuscarPorId {
         System.out.println("Email: " + funcionario.getEmail());
         System.out.println("Telefone: " + funcionario.getTelefone());
         
-        System.out.println("\nLista de seus dependetes:");
         
-        List<Dependente> dependentes = new ArrayList<Dependente>();
-        dependentes = funcionario.getDependentes();
-
-//        for(Dependente dependente : dependentes){
-//            System.out.println("Cod: " + dependente.getId());
-//            System.out.println("Nome: " + dependente.getNome());
-//            System.out.println("Email: " + dependente.getParentesco());
-//            System.out.println("");
-//        }
-
+        System.out.println("\nLista de seus dependentes:");
+        
+        for(Dependente dependente : funcionario.getDependentes()){
+            System.out.println("Cod: " + dependente.getId());
+            System.out.println("Nome: " + dependente.getNome());
+            System.out.println("Email: " + dependente.getParentesco());
+            System.out.println("");
+        }
 
 	}
-
 }
